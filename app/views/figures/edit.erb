@@ -1,0 +1,10 @@
+<h1>Edit <%= @figure.name %></h1>
+
+<form action="/figures/<%= @figure.id %>" method="POST">
+ <input type="hidden" name="_method" value="PATCH">
+
+ <label for="name">Name</label>
+ <input type="text" name="figure[name]" id="name" value="<%= @figure.name %>">
+
+ <input type="submit" value="Save">
+</form>

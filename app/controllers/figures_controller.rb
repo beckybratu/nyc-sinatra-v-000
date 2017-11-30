@@ -29,5 +29,12 @@ class FiguresController < ApplicationController
     erb :"/figures/show"
   end
 
+  patch '/figures/:id' do
+    @figure = Figure.find_by_id(params[:id])
+    @figure.update(params[:figure])
+    @figure.title = Title.find_or_create_by(name: params[:title][:name])
+    @figure.save
+    redirect to "/figures/#{@figure.id}"
+  end
 
 end
