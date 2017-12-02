@@ -1,3 +1,5 @@
+require 'pry'
+
 class LandmarksController < ApplicationController
 
   get '/landmarks' do
@@ -20,10 +22,11 @@ class LandmarksController < ApplicationController
   end
 
   patch '/landmarks/:id' do
+    binding.pry
     @landmark = Landmark.find_by_id(params[:id])
     @landmark.update(params[:landmark])
     @landmark.save
-    redirect to "/landmarks/#{@landmark.id}"
+    redirect "landmarks/#{@landmark.id}"
   end
 
   get '/landmarks/:id/edit' do
