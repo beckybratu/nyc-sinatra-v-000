@@ -29,7 +29,7 @@ class FiguresController < ApplicationController
     erb :"/figures/show"
   end
 
-  patch '/figures/:id' do
+  post '/figures/:id' do
     @figure = Figure.find_by_id(params[:id])
     @figure.update(params[:figure])
     @figure.landmarks.find_or_create_by(params[:landmark]) unless params[:landmark][:name].empty?
